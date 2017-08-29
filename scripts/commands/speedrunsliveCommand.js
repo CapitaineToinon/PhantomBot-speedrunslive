@@ -19,9 +19,9 @@
     /*
      * CACHE Global variables - used by get_Custom_API_Value_From_Cache()
      */ 
-    var cache_life = 5*60;          // The cache lifespan - 5 minutes
-    var src_cache = [];             // The actual cache variable
-    var CACHE_ENABLED = true;       // Can be used for debugging
+    var _cache_life = 5*60;          // The cache lifespan - 5 minutes
+    var _srl_cache = [];             // The actual cache variable
+    var _cache_enabled = true;       // Can be used for debugging
 
     /*
      * @function get_Custom_API_Value_From_Cache
@@ -31,14 +31,13 @@
      */
     function get_Custom_API_Value_From_Cache(url) {
         // Disable cache for debug
-        if (!CACHE_ENABLED) {
-            $.consoleLn("Cache is disabled");
+        if (!_cache_enabled) {
             return getCustomAPIValue(url);
         }
 
         // Hash the URL and use it as a key in the cache
         var hash = getHashCode(url);
-        if (!(hash in src_cache)) {
+        if (!(hash in _srl_cache)) {
             // Value not already in the cache
             var array = [];
             // Set the time to now
@@ -46,28 +45,27 @@
             // Get the content from the URL using getCustomAPIValue()
             array['content'] = getCustomAPIValue(url);
             // Add the value to the cache
-            src_cache[hash] = array;
+            _srl_cache[hash] = array;
             // Returning new value
-            return src_cache[hash]['content'];
+            return _srl_cache[hash]['content'];
         } 
         else {
             // Value in the cache
             var now = new Date().getTime() / 1000;
-            if(now - src_cache[hash]['time'] < cache_life) {
+            if(now - _srl_cache[hash]['time'] < _cache_life) {
                 // Cache didn't expire yet, returning cached value 
-                return src_cache[hash]['content'];
+                return _srl_cache[hash]['content'];
             } else {
                 // Cache expired 
-                $.consoleLn("Re-creating cache for value...");
                 var array = [];
                 // Set the time to now
                 array['time'] = new Date().getTime() / 1000;
                 // Get the content from the URL using getCustomAPIValue()
                 array['content'] = getCustomAPIValue(url);
                 // Add the value to the cache
-                src_cache[hash] = array;
+                _srl_cache[hash] = array;
                 // Returning new value
-                return src_cache[hash]['content'];
+                return _srl_cache[hash]['content'];
             }
         }
     }
