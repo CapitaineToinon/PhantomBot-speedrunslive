@@ -7,6 +7,7 @@ Custom script adding a race command to **[PhantomBot](https://github.com/Phantom
 ## Installation ##
 
 - Copy the script folder into the root PhantomBot folder
+- [Enable the module](https://community.phantombot.tv/t/how-to-enable-modules/1236)
 
 ## Usage ##
 The script will add a !race command and will look for races you're currently in using  the speedrunslive api and will return the game's name, race title, race state and the link to the race in the chat. 
