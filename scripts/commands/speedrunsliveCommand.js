@@ -21,7 +21,7 @@
      */ 
     var cache_life = 5*60;          // The cache lifespan - 5 minutes
     var src_cache = [];             // The actual cache variable
-    var CACHE_ENABLED = false;       // Can be used for debugging
+    var CACHE_ENABLED = true;       // Can be used for debugging
 
     /*
      * @function get_Custom_API_Value_From_Cache
