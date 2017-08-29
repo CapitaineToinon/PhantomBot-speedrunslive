@@ -23,12 +23,12 @@ By default, the script will look for races using Twitch channel's name. If for s
     
     $.lang.register('speedrunslive.account', '');
 
-### Race found ###
+### While racing on speedrunslive ###
 
     User: !race
     Bot: Dark Souls | All Bosses (Entry Open) at http://www.speedrunslive.com/races/result/#!/201941
 
-### Race not found ###
+### While not racing on speedrunslive ###
 
     User: !race
     Bot: CapitaineToinon is currently not racing on speedrunslive.
