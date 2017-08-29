@@ -19,7 +19,7 @@
     /*
      * CACHE Global variables - used by get_Custom_API_Value_From_Cache()
      */ 
-    var _cache_life = 5*60;          // The cache lifespan - 5 minutes
+    var _cache_life = 60;            // The cache lifespan - 1 minute
     var _srl_cache = [];             // The actual cache variable
     var _cache_enabled = true;       // Can be used for debugging
 
